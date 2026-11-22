@@ -537,3 +537,48 @@ h1 {color: rgb(73, 32, 16);}
 .brabt:last-child {
   margin-bottom: 0;
 }
+
+/* Mobile-only overrides (does not affect desktop > 768px) */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 10px;
+  }
+
+  .navbar a {
+    font-size: 0.78rem;
+    letter-spacing: 0.5px;
+    padding: 4px 8px;
+  }
+
+  .gallery,
+  .product-grid-2x2 {
+    display: flex !important;
+    flex-direction: column;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: none;
+    gap: 14px;
+    padding: 12px;
+    height: auto;
+  }
+
+  .gallery-button,
+  .gallery-item {
+    width: 100%;
+    height: auto;
+    grid-area: auto;
+  }
+
+  .gallery-item img,
+  .gallery img,
+  .product-grid-2x2 .gallery-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+}
