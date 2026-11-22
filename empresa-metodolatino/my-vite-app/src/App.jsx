@@ -18,9 +18,9 @@ import ScrollToTop from "./components/ScrollToTop.jsx";
 import RoupeirosPage from "./components/Pages/Quarto/RoupeirosPage.jsx";
 import CozinhaPage from "./components/Pages/CozinhaPage.jsx";
 import CasadbanhoPage from "./components/Pages/CasadbanhoPage.jsx";
-import CarpintariaPage from "./components/Pages/CarpintariaPage.jsx"; 
-import ComodasPage from "./components/Pages/Quarto/ComodasPage.jsx";
-import CamasPage from "./components/Pages/Quarto/CamasPage.jsx";
+import CarpintariaPage from "./components/Pages/carpintariaPage.jsx"; 
+import ComodasPage from "./components/Pages/Quarto/comodasPage.jsx";
+import CamasPage from "./components/Pages/Quarto/camasPage.jsx";
 // Added the missing import here:
 import EspacosalaPage from "./components/Pages/EspacosalaPage.jsx"; 
 
