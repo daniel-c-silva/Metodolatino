@@ -1,16 +1,6 @@
 /*! Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Reserves space equal to navbar height */
-}
-
-body {
-  margin: 0;
-  font-family: 'Noto Sans', sans-serif;
-  font-size: 20px;
-  color: #5a2b2b;
-  overflow-x: hidden;
-}
+html { scroll-behavior: smooth; } 
+body { margin: 0; font-family: 'Noto Sans', sans-serif; font-size: 20px; color: #5a2b2b; } 
 
 /*! Navbar */
 .navbar {
@@ -18,24 +8,23 @@ body {
   top: 0; /* Aligns it to the top */
   left: 0; /* Aligns it to the left */
   width: 100%; /* Full width */
-  box-sizing: border-box;
   background: rgba(245, 245, 245, 0.95); /* Light neutral color */
   backdrop-filter: blur(80px); /* Subtle blur effect */
   display: flex; /* Flexbox for layout */
   justify-content: center; /* Center items horizontally */
   align-items: center; /* Ensures perfect vertical centering */
   gap: 30px; /* Space between links */
-  padding: 15px 20px; /* Padding for spacing */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 15px 0; /* Padding for spacing (removed side padding to avoid offset) */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Subtle shadow */
   z-index: 1000; /* Ensure it stays on top */
   font-weight: 600; /* Slightly bolder text */
 }
 
 .navbar a {
   text-decoration: none; /* Remove underline */
-  text-align: center;
+  text-align: center; /* Slightly increase letter spacing */
   letter-spacing: 2px;
-  color: #444; /* Dark neutral color */
+  color: #444;  /* Dark neutral color */
   padding: 6px 12px; /* Padding for clickable area */
   border-radius: 6px; /* Rounded corners */
   transition: all 0.3s ease; /* Smooth hover effects */
@@ -45,17 +34,18 @@ body {
 .navbar a:hover {
   color: #fff; /* White text on hover */
   background-color: #6b4f3f; /* Warm wood-tone hover */
-  box-shadow: 0 4px 12px rgba(107, 79, 63, 0.3); /* Subtle shadow on hover */
+  box-shadow: 0 4px 12px rgba(107,79,63,0.3); /* Subtle shadow on hover */
 }
+
 
 /*! Base section styling */
 .section {
-  min-height: 100vh; /* Full viewport height */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 80px 20px; /* Breathing space on top and bottom */
+  padding: 80px 20px 40px;
   width: 100%;
   text-align: center;
   box-sizing: border-box;
@@ -65,88 +55,70 @@ body {
 }
 
 /*! Hero section */
-.hero {
+.hero { 
   background: #f5e8dc; /* Warm soft tones */
   border-bottom: 2px solid #d4bfa3;
 }
+.hero h2 {font-size: 1.7rem; margin-bottom: 20px; color: #9e7558; font-weight:500;}
+.hero p { font-size: 1.2rem; max-width: 600px; line-height: 1.6; }
 
-.hero h2 {
-  font-size: 1.7rem;
-  margin-bottom: 20px;
-  color: #9e7558;
-  font-weight: 500;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  max-width: 600px;
-  line-height: 1.6;
-}
 
 /*! About section */
-.section.about {
+.section.about { 
   background: #f7f3ef;
   color: #4a3c2a;
 }
+.section.about p { max-width: 600px; line-height: 1.6;}
 
-.section.about p {
-  max-width: 600px;
-  line-height: 1.6;
+p {color: rgb(73, 32, 16);}
+h2  {color: rgb(73, 32, 16);}
+
+/*! Services section */
+.section.services { 
+  background: #f0e6dc;
+  color: #4a3c2a;
 }
-
-p {
-  color: rgb(73, 32, 16);
+.section.services ul {
+  list-style: none;
+  padding: 0;
 }
-
-h2 {
-  color: rgb(73, 32, 16);
+.section.services li {
+  margin: 15px 0;
+  font-size: 1.1rem;
 }
 
 /*! Services section */
-.section.services,
-#services {
+.section.services, #services { 
   background: #f0e6dc;
   color: #4a3c2a;
 }
 
-.section.services ul,
-#services ul {
+/* Removes the dot from the <ul> layout */
+.section.services ul, #services ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  text-align: left;
-  max-width: 600px;
+  text-align: left; /* Optional: Aligns list items left for better reading with indentations */
+  max-width: 600px; /* Optional: Keeps the text blocks centered nicely on the page */
 }
 
-.section.services li,
-#services ul > p:nth-of-type(odd) {
+/* Rules for list titles (both <li> and the naked <p> titles) */
+.section.services li, #services ul > p:nth-of-type(odd) {
   margin-top: 20px;
   margin-bottom: 5px;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 600; /* Makes titles stand out */
 }
 
+/* Targets the specific description paragraph under the title */
 #services ul > p:nth-of-type(even) {
   margin: 0 0 20px 0;
-  padding-left: 20px;
-  font-size: 0.95rem;
-  color: #6b563f;
+  padding-left: 20px; /* Indents the description text */
+  font-size: 0.95rem;  /* Makes the description text smaller */
+  color: #6b563f;     /* Slightly lighter wood-tone for hierarchy */
 }
 
 /*! Gallery section */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columns */
-  grid-template-rows: repeat(2, 45vh); /* 2 rows */
-  grid-template-areas:
-    "a a d e c"
-    "a a b b c";
-  gap: 20px;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 20px;
-}
-
 /* Map buttons to grid areas */
 .gallery-button:nth-child(1) { grid-area: a; }
 .gallery-button:nth-child(2) { grid-area: b; }
@@ -166,16 +138,73 @@ h2 {
   display: block; /* Fill the grid space */
 }
 
+/* Keep your item styling the same */
+.gallery-item {
+  position: relative; /* Needed for absolutely positioned overlay inside */
+  overflow: hidden; /* Hide anything outside the container (for image zoom effect) */
+  border-radius: 15px; /* Rounded corners for a smooth furniture vibe */
+  height: 100%; /* Ensure the inner div fills the button */
+  width: 100%;
+}
+
+.gallery {
+  display: grid; 
+  grid-template-columns: repeat(5, 1fr);  /* 4 columns */
+  grid-template-rows: repeat(2, 45vh);   /* 2 rows */
+  
+  /* Layout map */
+  grid-template-areas: 
+    "a a d e c"
+    "a a b b c"; 
+    
+  gap: 20px;
+  width: 100%; /* Full width */
+  padding: 20px; /* Padding inside gallery */ 
+}
+
+/* Link buttons to grid areas */
+.gallery-button:nth-child(1) { grid-area: a; }
+.gallery-button:nth-child(2) { grid-area: b; }
+.gallery-button:nth-child(3) { grid-area: c; }
+.gallery-button:nth-child(4) { grid-area: d; }
+
+/*! Fix navbar scroll alignment */
+html {
+  scroll-padding-top: 80px; /* Reserves space equal to navbar height */
+}
+
+/* General spacing for all sections */
+.section {
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px; /* Breathing space on top and bottom */
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+  transition: background 0.5s ease;
+}
+
+/* Extra spacing for gallery and services */
+#services { margin-bottom: 80px; }
+#gallery { margin-top: 80px; }
+
 /* Each gallery item wraps the image and overlay */
 .gallery-item {
   position: relative; /* Needed for absolutely positioned overlay inside */
   overflow: hidden; /* Hide anything outside the container (for image zoom effect) */
   border-radius: 15px; /* Rounded corners for a smooth furniture vibe */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Soft shadow for depth */
   transition: transform 0.3s ease; /* Smooth transform animations */
-  height: 100%; /* Ensure the inner div fills the button */
-  width: 100%;
 }
+
+/* Assign specific areas for asymmetric layout */
+.gallery-item:nth-child(1) { grid-area: a; /* Big main image */ }
+.gallery-item:nth-child(2) { grid-area: b; /* Top-right small image */ }
+.gallery-item:nth-child(3) { grid-area: c; /* Another small image */ }
+.gallery-item:nth-child(4) { grid-area: d; /* Wide image at bottom */ }
 
 /* Ensure all images fill their containers properly */
 .gallery-item img {
@@ -194,11 +223,11 @@ h2 {
 /* Overlay that appears on hover */
 .gallery-item .overlay {
   position: absolute; /* Sticks to the gallery-item */
-  bottom: 0;
+  bottom: 0; 
   left: 0;
   width: 100%;
   height: 100%; /* Covers entire image */
-  background: rgba(0, 0, 0, 0.4); /* Dark semi-transparent overlay */
+  background: rgba(0,0,0,0.4); /* Dark semi-transparent overlay */
   color: #fff; /* White text */
   display: flex; /* Center text */
   justify-content: center;
@@ -214,19 +243,12 @@ h2 {
   opacity: 1;
 }
 
-/* Extra spacing for gallery and services */
-#services { margin-bottom: 80px; }
-#gallery { margin-top: 80px; }
-
 /*! Contact section */
-.section.contact {
+.section.contact { 
   background: #f7f0e4;
   color: #4a3c2a;
 }
-
-.section.contact p {
-  margin: 10px 0;
-}
+.section.contact p { margin: 10px 0; }
 
 /*! Footer */
 .footer {
@@ -248,10 +270,17 @@ h2 {
   font-weight: 600;
   transition: all 0.3s ease;
 }
-
 .button:hover {
   background-color: #533030;
-  box-shadow: 0 4px 12px rgba(83, 61, 48, 0.4);
+  box-shadow: 0 4px 12px rgba(83,61,48,0.4);
+}
+
+/*! Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.2rem; }
+  .hero p { font-size: 1rem; }
+  .gallery img { width: 150px; height: 150px; }
+  .navbar { flex-direction: column; gap: 15px; padding: 12px; }
 }
 
 /*! Pages */
@@ -261,8 +290,8 @@ h2 {
   padding: 100px 20px 40px; /* Extra top padding for navbar */
   max-width: 100vw;
   max-height: 1600px;
-  margin: 0 auto;
-  text-align: center;
+  margin: 0 auto; 
+  text-align: center; 
   background-color: #b19168;
 }
 
@@ -323,13 +352,12 @@ h2 {
 .product-grid-2x2 {
   display: grid !important;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 40vh 40vh;
+  grid-template-rows: 40vh 40vh; /* or auto for flexibility */
   grid-template-areas:
     "a b"
     "c c";
-  gap: 20px;
+  gap: 20px; /* no gap at all */
   width: 100%;
-  box-sizing: border-box;
   margin: 10px 0;
 }
 
@@ -396,36 +424,38 @@ h2 {
 }
 
 .roupeiros-page h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display', serif; /* Optional: adds a luxury feel */
   font-size: 2.5rem;
   margin-bottom: 40px;
   color: var(--text-dark);
   letter-spacing: 1px;
 }
-
 /* Horizontal scroll container */
 .scroll-container {
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
   gap: 25px;
-  padding: 40px 20px;
-  align-items: center;
+  padding: 40px 20px; /* Added horizontal padding so first/last images aren't stuck to edges */
+  align-items: center; /* Crucial: aligns images of different heights along the middle */
 }
 
 /* Hide scrollbars */
 .scroll-container::-webkit-scrollbar { display: none; }
-.scroll-container {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.scroll-container { 
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
 }
 
 /* Images */
 .scroll-image {
   flex: 0 0 auto; /* ALLOWS NATURAL WIDTH: tells the image "don't shrink, don't grow" */
-  height: 75vh; /* Keeps all images the same height for a clean line */
-  width: auto; /* Let the width calculate naturally based on the original image shape */
+  height: 75vh;   /* Keeps all images the same height for a clean line */
+  width: auto;    /* Let the width calculate naturally based on the original image shape */
+  
+  /* REMOVED: aspect-ratio and object-fit: fill */
   object-fit: contain; /* Ensures the whole image is visible without distortion */
+  
   border-radius: 20px;
   box-shadow: var(--shadow);
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -439,15 +469,17 @@ h2 {
 }
 
 /* ! Item text overlay */
-#IT {
+
+#IT{
   font-size: 28px;
   color: #50320b;
   font-weight: bold;
   text-shadow: 1px 1px 2px #624e34;
-}
 
+}
 /* ! go Back button */
-#Buttonback {
+#Buttonback{
+  
   position: absolute;
   top: 80px;
   left: 20px;
@@ -458,19 +490,21 @@ h2 {
   padding: 10px 15px;
   font-size: 16px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(107, 79, 63, 0.4);
+  box-shadow: 0 4px 12px rgba(107,79,63,0.4);
 }
-
 /* ! Home icon */
-.Home {
+.Home{
   font-size: 22px;
   color: #50320b;
   transform: translateX(24px);
+
 }
+
+
 
 a {
   text-decoration: none;
-  color: rgb(73, 32, 16);
+  color: black;
   transition: color 0.3s ease;
 }
 
@@ -478,84 +512,28 @@ a:hover {
   color: #826250; /* Warm wood-tone hover */
 }
 
-/*! Footer paragraph changes */
-.footerp {
-  color: white;
-}
 
-h1 {
-  color: rgb(73, 32, 16);
-}
+
+
+
+
+/*! Footer paragraph changes */
+
+.footerp {color: white;}
+
+
+a   {color: rgb(73, 32, 16);}
+
+h1 {color: rgb(73, 32, 16);}
 
 /* Targets your specific paragraphs and overrides default browser spacing */
 .brabt {
-  margin-top: 0;
-  margin-bottom: 8px;
-  line-height: 1.5;
+  margin-top: 0;          /* Removes top spacing */
+  margin-bottom: 8px;     /* Set this to whatever small value you prefer (e.g., 4px, 8px, 12px) */
+  line-height: 1.5;       /* Optional: Keeps the text easy to read */
 }
 
+/* Optional: Removes the margin from the very last paragraph so it doesn't push the section bottom */
 .brabt:last-child {
   margin-bottom: 0;
-}
-
-/*! Responsive */
-@media (max-width: 768px) {
-  html {
-    scroll-padding-top: 56px;
-  }
-
-  .navbar {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    padding: 8px 10px;
-  }
-
-  .navbar a {
-    font-size: 0.75rem;
-    letter-spacing: 0.5px;
-    padding: 4px 8px;
-  }
-
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .gallery,
-  .product-grid-2x2 {
-    display: flex !important;
-    flex-direction: column;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: none;
-    gap: 14px;
-    padding: 12px;
-    height: auto;
-  }
-
-  .gallery-button,
-  .gallery-item {
-    width: 100%;
-    height: auto;
-    grid-area: auto;
-  }
-
-  .gallery-item img,
-  .gallery img,
-  .product-grid-2x2 .gallery-item img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    display: block;
-  }
-
-  .scroll-image {
-    height: 50vh;
-    margin: 0 10px;
-  }
 }
